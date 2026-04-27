@@ -30,7 +30,7 @@
  *
  *     Now hurry Marty! Or I will be stuck in the past forever!
  *
- *     Doc Brown - 1955-11-05
+ *     Schachnosa Viertbauer - 2026-27-04
  *******************************************************/
 
 // HINT:
