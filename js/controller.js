@@ -1,4 +1,7 @@
 "use strict";
+
+// Connects Model and View
+
 /*******************************************************
  *     Back to the Future - 100p
  *
@@ -30,8 +33,31 @@
  *
  *     Now hurry Marty! Or I will be stuck in the past forever!
  *
- *     Doc Brown - 1955-11-05
+ *     Schachnosa Viertbauer - 2026-30-04
  *******************************************************/
 
 // HINT:
 // setInterval(functionName, 1000); will call functionName() every 1000 miliseconds.
+
+import { clockModel } from "./model.time.js";
+import {analogClockView} from "./view.analagoue.js";
+import {digitalClockView} from "./view.digital.js";
+
+let clockController = {
+    updateClock: function() {
+        let time = clockModel.getTime();
+        analogClockView.update(time.hours, time.minutes, time.seconds);
+        digitalClockView.update(time.hours, time.minutes, time.seconds);
+    },
+
+    saveTime: function() {
+        let time = clockModel.getTime();
+        localStorage.setItem("savedTime", JSON.stringify(time));
+        console.log("Time saved:", time);
+    }
+};
+
+document.getElementById("button")
+    .addEventListener("click", () => clockController.saveTime());
+setInterval(clockController.updateClock, 1000);
+
